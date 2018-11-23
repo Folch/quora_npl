@@ -10,15 +10,15 @@ Use this with
 import sys
 sys.path.insert(0, './common/')
 import csv_utils
-csv_utils.create_csv(predicted, test_ids)
+csv_utils.create_csvs(predicted, test_ids)
 
 Given the predicted outputs for each model:
 predicted = [[0,1,0,0,1,0],[0,1,0,1,1,0],[0,1,0,0,1,1]]
 test_ids = [12,32,43,44,11]
-Create the csv to submit to kaggle
+Create the csvs to submit to kaggle
 '''
 
-def create_csv(predicted, test_ids):
+def create_csvs(predicted, test_ids):
     EXPECTED_ROWS = 81126 
     tests_ids_len = len(test_ids)
     assert(tests_ids_len == EXPECTED_ROWS)
