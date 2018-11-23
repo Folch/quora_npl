@@ -24,20 +24,21 @@ def create_csv(predicted, test_ids):
     assert(tests_ids_len == EXPECTED_ROWS)
     for l in predicted:
         assert(len(l)==tests_ids_len)
-    FILENAME = 'submission_' + datetime.datetime.now().strftime("%I%M%p-%B-%d-%Y") + '.csv'
     
     FOLDER = join('data', 'submissions')
     CURRENT_PATH = abspath(curdir)
-    FULL_PATH = join(CURRENT_PATH, FOLDER, FILENAME)
-
-    merged = {'ids': test_ids}
-    for idx,v in enumerate(predicted):
-        merged[str(idx)] = v
     
-    df = pd.DataFrame.from_dict(merged)
+    for idx,v in enumerate(predicted):
+        merged = {'test_id': test_ids}
+        merged['is_duplicate'] = v
+    
+        FILENAME = 'submission_' + str(idx) + '_' + datetime.datetime.now().strftime("%I%M%p-%B-%d-%Y") + '.csv'
+        df = pd.DataFrame.from_dict(merged)
 
-    df.set_index('ids', inplace=True)
+        df.set_index('test_id', inplace=True)
 
-    df.to_csv(path_or_buf=FULL_PATH, sep=',')
+        FULL_PATH = join(CURRENT_PATH, FOLDER, FILENAME)
 
-    print('saved in: ', FULL_PATH)
+        df.to_csv(path_or_buf=FULL_PATH, sep=',')
+
+        print('saved in: ', FULL_PATH)
