@@ -2,3 +2,4 @@
 */.ipynb_checkpoints/
 common/__pycache__
 .ipynb_checkpoints/
+*.h5
