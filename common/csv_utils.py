@@ -24,7 +24,7 @@ def create_csvs(predicted, test_ids):
     assert(tests_ids_len == EXPECTED_ROWS)
     assert(len(predicted)==tests_ids_len)
     
-    FOLDER = join('..', 'data', 'submissions')
+    FOLDER = join('data', 'submissions')
     CURRENT_PATH = abspath(curdir)
     
     merged = {'test_id': test_ids}
