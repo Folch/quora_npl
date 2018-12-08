@@ -4,3 +4,4 @@ common/__pycache__
 .ipynb_checkpoints/
 *.h5
 *.vec
+data/train_data_v3_processed.csv
